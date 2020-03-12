@@ -1,23 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router } from 'react-router-dom'
+import {BrowserRouter as Router} from 'react-router-dom'
 
 import Routes from 'routes'
 import TopBar from 'components/topBar';
 import {CurrentUserProvider} from 'contexts/currentUser'
+import CurrentUserChecker from 'components/currentUserChecker'
 
 
 const App = () => {
     return (
         <CurrentUserProvider>
-            <h3>Welcome to hooks.</h3>
-            <Router>
-                <TopBar />
-                <Routes />
-            </Router>
+            <CurrentUserChecker>
+                <Router>
+                    <TopBar/>
+                    <Routes/>
+                </Router>
+            </CurrentUserChecker>
         </CurrentUserProvider>
     )
 }
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<App/>, document.getElementById('root'));
 
